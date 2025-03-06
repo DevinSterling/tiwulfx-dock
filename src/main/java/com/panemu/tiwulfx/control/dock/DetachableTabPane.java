@@ -42,6 +42,7 @@ public class DetachableTabPane extends TabPane {
 	private int dropIndex;
 	private final List<Double> lstTabPoint = new ArrayList<>();
 	private boolean closeIfEmpty;
+	private boolean closeStageIfEmpty;
 	/**
 	 * Tab ANIMATION_SPEED=150 millis + wait 50~100 millis
 	 */
@@ -536,7 +537,7 @@ public class DetachableTabPane extends TabPane {
 				}
 			}
 		}
-		if (empty) {
+		if (empty && closeStageIfEmpty) {
 			stage.close();
 		}
 	}
@@ -699,6 +700,14 @@ public class DetachableTabPane extends TabPane {
 	 */
 	public void setCloseIfEmpty(boolean closeIfEmpty) {
 		this.closeIfEmpty = closeIfEmpty;
+	}
+
+	public boolean isCloseStageIfEmpty() {
+		return closeStageIfEmpty;
+	}
+
+	public void setCloseStageIfEmpty(boolean closeStageIfEmpty) {
+		this.closeStageIfEmpty = closeStageIfEmpty;
 	}
 
 	static final int STAGE_WIDTH = 400;
